@@ -1,0 +1,25 @@
+<idea-plugin>
+    <id>com.github.zgs94328.templates</id>
+    <name>templates</name>
+    <vendor>zgs94328</vendor>
+
+    <!-- Product and plugin compatibility requirements -->
+    <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>org.jetbrains.android</depends>
+    <depends>org.jetbrains.kotlin</depends>
+    <depends>com.intellij.modules.java</depends>
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="com.github.zgs94328.templates.services.MyApplicationService"/>
+        <projectService serviceImplementation="com.github.zgs94328.templates.services.MyProjectService"/>
+    </extensions>
+
+    <applicationListeners>
+        <listener class="com.github.zgs94328.templates.listeners.MyProjectManagerListener"
+                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
+    </applicationListeners>
+    <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
+        <wizardTemplateProvider implementation="other.mvvm.SamplePluginTemplateProviderImpl" />
+    </extensions>
+</idea-plugin>
